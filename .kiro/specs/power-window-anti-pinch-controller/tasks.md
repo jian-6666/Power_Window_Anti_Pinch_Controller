@@ -51,15 +51,15 @@
     - 测试输入输出函数正确性
     - _需求: 14.1_
 
-- [-] 4. 诊断模块（PowerWindow_Diag）
-  - [~] 4.1 实现 PowerWindow_Diag.h
+- [x] 4. 诊断模块（PowerWindow_Diag）
+  - [x] 4.1 实现 PowerWindow_Diag.h
     - 声明初始化函数
     - 声明故障码管理函数（SetDTC、ClearDTC、ClearAllDTCs）
     - 声明故障码查询函数（GetActiveDTCs、GetHistoryDTCs、IsDTCActive）
     - 声明诊断数据读取函数（ReadPosition、ReadState、ReadLearnState、ReadCalibrationParams）
     - _需求: 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8_
 
-  - [~] 4.2 实现 PowerWindow_Diag.c
+  - [x] 4.2 实现 PowerWindow_Diag.c
     - 实现故障码存储数据结构（活动故障码列表、历史故障码列表）
     - 实现故障码设置逻辑（添加到活动列表和历史列表）
     - 实现故障码清除逻辑（从活动列表移除，保留历史）
@@ -78,15 +78,15 @@
     - **验证需求: 9.3, 9.4, 9.5**
     - _需求: 14.1_
 
-- [~] 5. 非易失性存储模块（PowerWindow_NvM）
-  - [~] 5.1 实现 PowerWindow_NvM.h
+- [x] 5. 非易失性存储模块（PowerWindow_NvM）
+  - [x] 5.1 实现 PowerWindow_NvM.h
     - 声明初始化函数
     - 声明数据操作函数（LoadData、SaveData）
     - 声明条件保存函数（CheckAndSave）
     - 声明状态查询函数（IsDataValid）
     - _需求: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6_
 
-  - [~] 5.2 实现 PowerWindow_NvM.c
+  - [x] 5.2 实现 PowerWindow_NvM.c
     - 实现 CRC32 校验算法
     - 实现数据加载函数（从模拟存储读取，验证 CRC）
     - 实现数据保存函数（计算 CRC，写入模拟存储）
@@ -110,14 +110,14 @@
     - **验证需求: 8.7**
     - _需求: 14.1_
 
-- [~] 6. 安全监控模块（PowerWindow_Safety）
-  - [~] 6.1 实现 PowerWindow_Safety.h
+- [x] 6. 安全监控模块（PowerWindow_Safety）
+  - [x] 6.1 实现 PowerWindow_Safety.h
     - 声明初始化函数
     - 声明监控函数（MonitorAntiPinch、MonitorCurrent、MonitorVoltage）
     - 声明故障检查函数（CheckFaults、HasActiveFault、GetActiveFaults）
     - _需求: 3.1, 3.2, 5.1, 5.2, 5.4, 6.1, 6.2_
 
-  - [~] 6.2 实现 PowerWindow_Safety.c
+  - [x] 6.2 实现 PowerWindow_Safety.c
     - 实现防夹检测算法（电流阈值比较）
     - 实现电流监测逻辑（过流、欠流去抖）
     - 实现电压监测逻辑（欠压去抖、欠压恢复）
@@ -143,14 +143,14 @@
     - **验证需求: 6.4**
     - _需求: 14.1_
 
-- [~] 7. 状态机模块（PowerWindow_StateMachine）
-  - [~] 7.1 实现 PowerWindow_StateMachine.h
+- [x] 7. 状态机模块（PowerWindow_StateMachine）
+  - [x] 7.1 实现 PowerWindow_StateMachine.h
     - 声明初始化函数
     - 声明状态管理函数（Update、GetState、RequestTransition）
     - 声明状态查询函数（CanAcceptCommand、IsMoving）
     - _需求: 11.1, 11.2, 11.3, 11.4_
 
-  - [~] 7.2 实现 PowerWindow_StateMachine.c
+  - [x] 7.2 实现 PowerWindow_StateMachine.c
     - 实现状态机数据结构（当前状态、上一状态、转换时间戳）
     - 实现状态转换逻辑（根据转换条件表）
     - 实现状态转换事件记录（通过 Diag 模块）
@@ -173,37 +173,37 @@
     - **验证需求: 11.7**
     - _需求: 14.1_
 
-- [~] 8. 主控模块（PowerWindow）
-  - [~] 8.1 实现 PowerWindow.h
+- [x] 8. 主控模块（PowerWindow）
+  - [x] 8.1 实现 PowerWindow.h
     - 声明初始化和主函数（Init、MainFunction_10ms）
     - 声明控制接口（SetButtonState、TriggerLearnProcedure、StopMotor）
     - 声明查询接口（GetCurrentState、GetPositionPercent、GetRawPosition、IsLearnCompleted）
     - _需求: 12.1, 12.2_
 
-  - [~] 8.2 实现 PowerWindow.c - 核心数据结构和初始化
+  - [x] 8.2 实现 PowerWindow.c - 核心数据结构和初始化
     - 定义运行时数据结构实例
     - 实现系统初始化函数（初始化所有子模块、加载 NvM 数据）
     - 实现位置转换算法（原始值转百分比）
     - _需求: 4.2, 13.5_
 
-  - [~] 8.3 实现 PowerWindow.c - 输入处理
+  - [x] 8.3 实现 PowerWindow.c - 输入处理
     - 实现输入读取函数（读取按钮、位置、电流、电压）
     - 实现按钮状态处理逻辑（检测按下时间、判断手动/自动模式）
     - _需求: 1.1, 1.2, 1.3, 1.4, 2.1, 2.2_
 
-  - [~] 8.4 实现 PowerWindow.c - 输出控制
+  - [x] 8.4 实现 PowerWindow.c - 输出控制
     - 实现电机输出控制函数（根据状态设置电机方向）
     - 实现位置更新逻辑
     - 实现限位检测（上限、下限）
     - _需求: 1.5, 1.6, 2.3_
 
-  - [~] 8.5 实现 PowerWindow.c - 学习程序
+  - [x] 8.5 实现 PowerWindow.c - 学习程序
     - 实现学习程序触发函数
     - 实现学习流程状态机（驱动至上限、记录、驱动至下限、记录、验证、保存）
     - 实现学习完成标志管理
     - _需求: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6_
 
-  - [~] 8.6 实现 PowerWindow.c - 主函数集成
+  - [x] 8.6 实现 PowerWindow.c - 主函数集成
     - 实现 PowerWindow_MainFunction_10ms（按设计的执行顺序）
     - 集成输入读取、安全监控、状态机更新、输出控制、诊断更新、NvM 保存
     - 实现执行时间统计
@@ -240,7 +240,7 @@
     - **验证需求: 12.4**
     - _需求: 14.1_
 
-- [~] 9. 集成测试和端到端场景测试
+- [x] 9. 集成测试和端到端场景测试
   - [ ]* 9.1 编写手动升降集成测试
     - 测试手动升窗完整流程
     - 测试手动降窗完整流程
@@ -310,53 +310,53 @@
   - 生成代码覆盖率报告，确保达到目标（语句覆盖率 ≥ 95%，分支覆盖率 ≥ 90%）
   - 如有问题，询问用户
 
-- [~] 12. 文档编写
-  - [~] 12.1 编写 API 接口文档（docs/api.md）
+- [x] 12. 文档编写
+  - [x] 12.1 编写 API 接口文档（docs/api.md）
     - 记录所有公开 API 函数签名
     - 记录函数参数、返回值、使用示例
     - _需求: 15.5_
 
-  - [~] 12.2 编写状态机详细设计文档（docs/state_machine.md）
+  - [x] 12.2 编写状态机详细设计文档（docs/state_machine.md）
     - 绘制状态转换图（Mermaid 格式）
     - 记录所有状态转换条件
     - 提供状态转换示例
     - _需求: 15.4_
 
-  - [~] 12.3 更新 README.md
+  - [x] 12.3 更新 README.md
     - 添加项目概述和特性列表
     - 添加快速开始指南（编译、运行、测试）
     - 添加目录结构说明
     - 添加依赖项和环境要求
     - _需求: 15.1_
 
-  - [~] 12.4 编写测试说明文档（docs/testing.md）
+  - [x] 12.4 编写测试说明文档（docs/testing.md）
     - 记录测试环境搭建步骤
     - 记录测试执行命令
     - 记录测试覆盖率目标和结果
     - 提供测试用例编写指南
     - _需求: 15.7_
 
-- [~] 13. 最终验证和交付
-  - [~] 13.1 执行完整编译和测试流程
+- [x] 13. 最终验证和交付
+  - [x] 13.1 执行完整编译和测试流程
     - 执行 make clean && make
     - 执行 make test
     - 执行 make coverage
     - 验证所有测试通过，覆盖率达标
     - _需求: 14.8_
 
-  - [~] 13.2 代码质量检查
+  - [x] 13.2 代码质量检查
     - 执行 make lint（静态代码分析）
     - 执行 make format（代码格式化）
     - 检查编译警告，确保无警告
     - _需求: 13.1_
 
-  - [~] 13.3 文档完整性检查
+  - [x] 13.3 文档完整性检查
     - 检查所有文档是否完整
     - 检查文档中的代码示例是否正确
     - 检查文档格式和链接
     - _需求: 15.1, 15.2, 15.3, 15.4, 15.5, 15.6, 15.7_
 
-  - [~] 13.4 创建发布包
+  - [x] 13.4 创建发布包
     - 生成发布版本的可执行文件
     - 打包源代码、文档、配置文件
     - 生成版本说明（CHANGELOG.md）
