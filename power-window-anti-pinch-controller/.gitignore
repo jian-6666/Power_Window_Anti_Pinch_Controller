@@ -1,0 +1,34 @@
+# Build artifacts
+build/
+*.o
+*.a
+*.so
+*.exe
+*.out
+
+# Test artifacts
+test_runner
+test_results.txt
+*.gcda
+*.gcno
+coverage/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Dependencies
+unity/
+third_party/
+
+# Documentation build
+docs/_build/
+docs/.doctrees/
+
+# Temporary files
+*.tmp
+*.bak
