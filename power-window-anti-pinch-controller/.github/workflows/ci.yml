@@ -1,0 +1,58 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential gcc make lcov cppcheck
+        
+    - name: Build project
+      run: |
+        make clean
+        make CFLAGS="-Wall -Wextra -Werror"
+        
+    - name: Run tests
+      run: |
+        make test
+        
+    - name: Generate coverage report
+      run: |
+        make coverage
+        
+    - name: Check coverage targets
+      run: |
+        make coverage-check
+        
+    - name: Run static analysis
+      run: |
+        make lint
+        
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.info
+        flags: unittests
+        name: codecov-umbrella
+        fail_ci_if_error: false
+        
+    - name: Archive test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results
+        path: |
+          build/test_results.xml
+          coverage/
